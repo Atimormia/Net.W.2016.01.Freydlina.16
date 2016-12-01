@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="62e98ddf20f44bfc8174dcdea57a8eb6" Name="Diagram1">
+        <EntityTypeShape EntityType="ShawarmaDBModel.Ingradient" Width="1.5" PointX="2.625" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShawarmaDBModel.IngradientCategory" Width="1.5" PointX="2.625" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShawarmaDBModel.OrderHeader" Width="1.5" PointX="7.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShawarmaDBModel.PriceController" Width="1.5" PointX="7.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShawarmaDBModel.Seller" Width="1.5" PointX="9.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShawarmaDBModel.SellingPoint" Width="1.5" PointX="9.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShawarmaDBModel.SellingPointCategory" Width="1.5" PointX="11.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShawarmaDBModel.Shawarma" Width="1.5" PointX="4.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShawarmaDBModel.ShawarmaRecipe" Width="1.5" PointX="2.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShawarmaDBModel.TimeController" Width="1.5" PointX="11.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShawarmaDBModel.OrderDetails" Width="1.5" PointX="4.875" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="ShawarmaDBModel.Ingradient_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="ShawarmaDBModel.ShawarmaRecipe_fk1" ManuallyRouted="false" />
+        <AssociationConnector Association="ShawarmaDBModel.OrderDetails_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="ShawarmaDBModel.OrderHeader_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="ShawarmaDBModel.PriceController_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="ShawarmaDBModel.PriceController_fk1" ManuallyRouted="false" />
+        <AssociationConnector Association="ShawarmaDBModel.Seller_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="ShawarmaDBModel.TimeController_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="ShawarmaDBModel.SellingPoint_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="ShawarmaDBModel.OrderDetails_fk1" ManuallyRouted="false" />
+        <AssociationConnector Association="ShawarmaDBModel.ShawarmaRecipe_fk0" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

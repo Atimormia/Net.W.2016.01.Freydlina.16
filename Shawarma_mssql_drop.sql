@@ -1,0 +1,33 @@
+DROP TABLE IF EXISTS [Ingradient]
+
+GO
+DROP TABLE IF EXISTS [OrderHeader]
+
+GO
+DROP TABLE IF EXISTS [Shawarma]
+
+GO
+DROP TABLE IF EXISTS [IngradientCategory]
+
+GO
+DROP TABLE IF EXISTS [ShawarmaRecipe]
+
+GO
+DROP TABLE IF EXISTS [TimeController]
+
+GO
+DROP TABLE IF EXISTS [SellingPointCategory]
+
+GO
+DROP TABLE IF EXISTS [SellingPoint]
+
+GO
+DROP TABLE IF EXISTS [Seller]
+
+GO
+DROP TABLE IF EXISTS [PriceController]
+
+GO
+DROP TABLE IF EXISTS [OrderDetails]
+
+GO
