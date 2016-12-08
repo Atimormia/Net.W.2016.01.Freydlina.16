@@ -17,13 +17,13 @@ namespace ShawarmaProject
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SellingPointCategory()
         {
-            this.SellingPoint = new HashSet<SellingPoint>();
+            this.SellingPoints = new HashSet<SellingPoint>();
         }
     
         public int SellingPointCategoryId { get; set; }
         public string SellingPointCategoryName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SellingPoint> SellingPoint { get; set; }
+        public virtual ICollection<SellingPoint> SellingPoints { get; set; }
     }
 }

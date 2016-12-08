@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [Ingradient] (
 	IngradientId int NOT NULL,
-	IngradientName varchar NOT NULL,
+	IngradientName varchar (MAX) NOT NULL,
 	TotalWeight int NOT NULL,
 	CategoryId int NOT NULL,
   CONSTRAINT [PK_INGRADIENT] PRIMARY KEY CLUSTERED
@@ -23,7 +23,7 @@ CREATE TABLE [OrderHeader] (
 GO
 CREATE TABLE [Shawarma] (
 	ShawarmaId int NOT NULL,
-	ShawarmaName varchar,
+	ShawarmaName varchar (MAX),
 	CookingTime int NOT NULL,
   CONSTRAINT [PK_SHAWARMA] PRIMARY KEY CLUSTERED
   (
@@ -34,7 +34,7 @@ CREATE TABLE [Shawarma] (
 GO
 CREATE TABLE [IngradientCategory] (
 	CategoryId int NOT NULL,
-	CategoryName varchar NOT NULL,
+	CategoryName varchar (MAX) NOT NULL,
   CONSTRAINT [PK_INGRADIENTCATEGORY] PRIMARY KEY CLUSTERED
   (
   [CategoryId] ASC
@@ -78,9 +78,9 @@ CREATE TABLE [SellingPointCategory] (
 GO
 CREATE TABLE [SellingPoint] (
 	SellingPointId int NOT NULL,
-	Address varchar NOT NULL,
+	Address varchar (MAX) NOT NULL,
 	SellingPointCategory int NOT NULL,
-	ShawarmaTitle varchar NOT NULL,
+	ShawarmaTitle varchar (MAX) NOT NULL,
   CONSTRAINT [PK_SELLINGPOINT] PRIMARY KEY CLUSTERED
   (
   [SellingPointId] ASC
@@ -90,7 +90,7 @@ CREATE TABLE [SellingPoint] (
 GO
 CREATE TABLE [Seller] (
 	SellerId int NOT NULL,
-	SellerName varchar NOT NULL,
+	SellerName varchar (MAX) NOT NULL,
 	SellingPointId int NOT NULL,
   CONSTRAINT [PK_SELLER] PRIMARY KEY CLUSTERED
   (

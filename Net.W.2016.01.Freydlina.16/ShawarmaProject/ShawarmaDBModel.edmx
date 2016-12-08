@@ -9,17 +9,17 @@
           <Key>
             <PropertyRef Name="IngradientId" />
           </Key>
-          <Property Name="IngradientId" Type="int" Nullable="false" />
-          <Property Name="IngradientName" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="IngradientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IngradientName" Type="varchar(max)" Nullable="false" />
           <Property Name="TotalWeight" Type="int" Nullable="false" />
-          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="CategoryId" Type="int" />
         </EntityType>
         <EntityType Name="IngradientCategory">
           <Key>
             <PropertyRef Name="CategoryId" />
           </Key>
-          <Property Name="CategoryId" Type="int" Nullable="false" />
-          <Property Name="CategoryName" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDLINA.16\NET.W.2016.01.FREYDLINA.16\SHAWARMAPROJECT\SHAWARMADB.MDF.dbo.OrderDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -37,7 +37,7 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
           <Key>
             <PropertyRef Name="OrderHeaderId" />
           </Key>
-          <Property Name="OrderHeaderId" Type="int" Nullable="false" />
+          <Property Name="OrderHeaderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OrderDate" Type="date" Nullable="false" />
           <Property Name="SellerId" Type="int" Nullable="false" />
         </EntityType>
@@ -45,7 +45,7 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
           <Key>
             <PropertyRef Name="PriceControllerId" />
           </Key>
-          <Property Name="PriceControllerId" Type="int" Nullable="false" />
+          <Property Name="PriceControllerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ShwarmaId" Type="int" Nullable="false" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="SellingPointId" Type="int" Nullable="false" />
@@ -55,39 +55,39 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
           <Key>
             <PropertyRef Name="SellerId" />
           </Key>
-          <Property Name="SellerId" Type="int" Nullable="false" />
-          <Property Name="SellerName" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="SellerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SellerName" Type="varchar(max)" Nullable="false" />
           <Property Name="SellingPointId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="SellingPoint">
           <Key>
             <PropertyRef Name="SellingPointId" />
           </Key>
-          <Property Name="SellingPointId" Type="int" Nullable="false" />
-          <Property Name="Address" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="SellingPointId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Address" Type="varchar(max)" Nullable="false" />
           <Property Name="SellingPointCategory" Type="int" Nullable="false" />
-          <Property Name="ShawarmaTitle" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="ShawarmaTitle" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="SellingPointCategory">
           <Key>
             <PropertyRef Name="SellingPointCategoryId" />
           </Key>
-          <Property Name="SellingPointCategoryId" Type="int" Nullable="false" />
+          <Property Name="SellingPointCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SellingPointCategoryName" Type="text" Nullable="false" />
         </EntityType>
         <EntityType Name="Shawarma">
           <Key>
             <PropertyRef Name="ShawarmaId" />
           </Key>
-          <Property Name="ShawarmaId" Type="int" Nullable="false" />
-          <Property Name="ShawarmaName" Type="varchar" MaxLength="1" />
+          <Property Name="ShawarmaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShawarmaName" Type="varchar(max)" />
           <Property Name="CookingTime" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ShawarmaRecipe">
           <Key>
             <PropertyRef Name="ShawarmaRecipeId" />
           </Key>
-          <Property Name="ShawarmaRecipeId" Type="int" Nullable="false" />
+          <Property Name="ShawarmaRecipeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ShawarmaId" Type="int" Nullable="false" />
           <Property Name="IngradientId" Type="int" Nullable="false" />
           <Property Name="Weight" Type="int" Nullable="false" />
@@ -96,13 +96,13 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
           <Key>
             <PropertyRef Name="TimeControllerId" />
           </Key>
-          <Property Name="TimeControllerId" Type="int" Nullable="false" />
+          <Property Name="TimeControllerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SellerId" Type="int" Nullable="false" />
           <Property Name="WorkStart" Type="datetime" Nullable="false" />
           <Property Name="WorkEnd" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="Ingradient_fk0">
-          <End Role="IngradientCategory" Type="Self.IngradientCategory" Multiplicity="1" />
+          <End Role="IngradientCategory" Type="Self.IngradientCategory" Multiplicity="0..1" />
           <End Role="Ingradient" Type="Self.Ingradient" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="IngradientCategory">
@@ -305,26 +305,26 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
           <Key>
             <PropertyRef Name="IngradientId" />
           </Key>
-          <Property Name="IngradientId" Type="Int32" Nullable="false" />
-          <Property Name="IngradientName" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IngradientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IngradientName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TotalWeight" Type="Int32" Nullable="false" />
-          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" />
           <NavigationProperty Name="IngradientCategory" Relationship="Self.Ingradient_fk0" FromRole="Ingradient" ToRole="IngradientCategory" />
-          <NavigationProperty Name="ShawarmaRecipe" Relationship="Self.ShawarmaRecipe_fk1" FromRole="Ingradient" ToRole="ShawarmaRecipe" />
+          <NavigationProperty Name="ShawarmaRecipes" Relationship="Self.ShawarmaRecipe_fk1" FromRole="Ingradient" ToRole="ShawarmaRecipe" />
         </EntityType>
         <EntityType Name="IngradientCategory">
           <Key>
             <PropertyRef Name="CategoryId" />
           </Key>
-          <Property Name="CategoryId" Type="Int32" Nullable="false" />
-          <Property Name="CategoryName" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Ingradient" Relationship="Self.Ingradient_fk0" FromRole="IngradientCategory" ToRole="Ingradient" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Ingradients" Relationship="Self.Ingradient_fk0" FromRole="IngradientCategory" ToRole="Ingradient" />
         </EntityType>
         <EntityType Name="OrderHeader">
           <Key>
             <PropertyRef Name="OrderHeaderId" />
           </Key>
-          <Property Name="OrderHeaderId" Type="Int32" Nullable="false" />
+          <Property Name="OrderHeaderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="SellerId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="OrderDetails" Relationship="Self.OrderDetails_fk0" FromRole="OrderHeader" ToRole="OrderDetails" />
@@ -334,7 +334,7 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
           <Key>
             <PropertyRef Name="PriceControllerId" />
           </Key>
-          <Property Name="PriceControllerId" Type="Int32" Nullable="false" />
+          <Property Name="PriceControllerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ShwarmaId" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="SellingPointId" Type="Int32" Nullable="false" />
@@ -346,49 +346,49 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
           <Key>
             <PropertyRef Name="SellerId" />
           </Key>
-          <Property Name="SellerId" Type="Int32" Nullable="false" />
-          <Property Name="SellerName" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SellerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SellerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SellingPointId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="OrderHeader" Relationship="Self.OrderHeader_fk0" FromRole="Seller" ToRole="OrderHeader" />
+          <NavigationProperty Name="OrderHeaders" Relationship="Self.OrderHeader_fk0" FromRole="Seller" ToRole="OrderHeader" />
           <NavigationProperty Name="SellingPoint" Relationship="Self.Seller_fk0" FromRole="Seller" ToRole="SellingPoint" />
-          <NavigationProperty Name="TimeController" Relationship="Self.TimeController_fk0" FromRole="Seller" ToRole="TimeController" />
+          <NavigationProperty Name="TimeControllers" Relationship="Self.TimeController_fk0" FromRole="Seller" ToRole="TimeController" />
         </EntityType>
         <EntityType Name="SellingPoint">
           <Key>
             <PropertyRef Name="SellingPointId" />
           </Key>
-          <Property Name="SellingPointId" Type="Int32" Nullable="false" />
-          <Property Name="Address" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SellingPointId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SellingPointCategory" Type="Int32" Nullable="false" />
-          <Property Name="ShawarmaTitle" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="PriceController" Relationship="Self.PriceController_fk1" FromRole="SellingPoint" ToRole="PriceController" />
-          <NavigationProperty Name="Seller" Relationship="Self.Seller_fk0" FromRole="SellingPoint" ToRole="Seller" />
+          <Property Name="ShawarmaTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PriceControllers" Relationship="Self.PriceController_fk1" FromRole="SellingPoint" ToRole="PriceController" />
+          <NavigationProperty Name="Sellers" Relationship="Self.Seller_fk0" FromRole="SellingPoint" ToRole="Seller" />
           <NavigationProperty Name="SellingPointCategory1" Relationship="Self.SellingPoint_fk0" FromRole="SellingPoint" ToRole="SellingPointCategory" />
         </EntityType>
         <EntityType Name="SellingPointCategory">
           <Key>
             <PropertyRef Name="SellingPointCategoryId" />
           </Key>
-          <Property Name="SellingPointCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="SellingPointCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SellingPointCategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="SellingPoint" Relationship="Self.SellingPoint_fk0" FromRole="SellingPointCategory" ToRole="SellingPoint" />
+          <NavigationProperty Name="SellingPoints" Relationship="Self.SellingPoint_fk0" FromRole="SellingPointCategory" ToRole="SellingPoint" />
         </EntityType>
         <EntityType Name="Shawarma">
           <Key>
             <PropertyRef Name="ShawarmaId" />
           </Key>
-          <Property Name="ShawarmaId" Type="Int32" Nullable="false" />
-          <Property Name="ShawarmaName" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ShawarmaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShawarmaName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CookingTime" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="PriceController" Relationship="Self.PriceController_fk0" FromRole="Shawarma" ToRole="PriceController" />
+          <NavigationProperty Name="PriceControllers" Relationship="Self.PriceController_fk0" FromRole="Shawarma" ToRole="PriceController" />
           <NavigationProperty Name="OrderDetails" Relationship="Self.OrderDetails_fk1" FromRole="Shawarma" ToRole="OrderDetails" />
-          <NavigationProperty Name="ShawarmaRecipe" Relationship="Self.ShawarmaRecipe_fk0" FromRole="Shawarma" ToRole="ShawarmaRecipe" />
+          <NavigationProperty Name="ShawarmaRecipes" Relationship="Self.ShawarmaRecipe_fk0" FromRole="Shawarma" ToRole="ShawarmaRecipe" />
         </EntityType>
         <EntityType Name="ShawarmaRecipe">
           <Key>
             <PropertyRef Name="ShawarmaRecipeId" />
           </Key>
-          <Property Name="ShawarmaRecipeId" Type="Int32" Nullable="false" />
+          <Property Name="ShawarmaRecipeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ShawarmaId" Type="Int32" Nullable="false" />
           <Property Name="IngradientId" Type="Int32" Nullable="false" />
           <Property Name="Weight" Type="Int32" Nullable="false" />
@@ -399,13 +399,13 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
           <Key>
             <PropertyRef Name="TimeControllerId" />
           </Key>
-          <Property Name="TimeControllerId" Type="Int32" Nullable="false" />
+          <Property Name="TimeControllerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SellerId" Type="Int32" Nullable="false" />
           <Property Name="WorkStart" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="WorkEnd" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Seller" Relationship="Self.TimeController_fk0" FromRole="TimeController" ToRole="Seller" />
         </EntityType>
-        <EntityType Name="OrderDetails">
+        <EntityType Name="OrderDetail">
           <Key>
             <PropertyRef Name="OrderHeaderId" />
             <PropertyRef Name="ShawarmaId" />
@@ -418,7 +418,7 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
           <NavigationProperty Name="Shawarma" Relationship="Self.OrderDetails_fk1" FromRole="OrderDetails" ToRole="Shawarma" />
         </EntityType>
         <Association Name="Ingradient_fk0">
-          <End Role="IngradientCategory" Type="Self.IngradientCategory" Multiplicity="1" />
+          <End Role="IngradientCategory" Type="Self.IngradientCategory" Multiplicity="0..1" />
           <End Role="Ingradient" Type="Self.Ingradient" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="IngradientCategory">
@@ -443,7 +443,7 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
         </Association>
         <Association Name="OrderDetails_fk0">
           <End Role="OrderHeader" Type="Self.OrderHeader" Multiplicity="1" />
-          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OrderHeader">
               <PropertyRef Name="OrderHeaderId" />
@@ -527,7 +527,7 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
         </Association>
         <Association Name="OrderDetails_fk1">
           <End Role="Shawarma" Type="Self.Shawarma" Multiplicity="1" />
-          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Shawarma">
               <PropertyRef Name="ShawarmaId" />
@@ -550,60 +550,60 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ShawarmaDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Ingradient" EntityType="Self.Ingradient" />
-          <EntitySet Name="IngradientCategory" EntityType="Self.IngradientCategory" />
-          <EntitySet Name="OrderHeader" EntityType="Self.OrderHeader" />
-          <EntitySet Name="PriceController" EntityType="Self.PriceController" />
-          <EntitySet Name="Seller" EntityType="Self.Seller" />
-          <EntitySet Name="SellingPoint" EntityType="Self.SellingPoint" />
-          <EntitySet Name="SellingPointCategory" EntityType="Self.SellingPointCategory" />
-          <EntitySet Name="Shawarma" EntityType="Self.Shawarma" />
-          <EntitySet Name="ShawarmaRecipe" EntityType="Self.ShawarmaRecipe" />
-          <EntitySet Name="TimeController" EntityType="Self.TimeController" />
-          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" />
+          <EntitySet Name="Ingradients" EntityType="Self.Ingradient" />
+          <EntitySet Name="IngradientCategories" EntityType="Self.IngradientCategory" />
+          <EntitySet Name="OrderHeaders" EntityType="Self.OrderHeader" />
+          <EntitySet Name="PriceControllers" EntityType="Self.PriceController" />
+          <EntitySet Name="Sellers" EntityType="Self.Seller" />
+          <EntitySet Name="SellingPoints" EntityType="Self.SellingPoint" />
+          <EntitySet Name="SellingPointCategories" EntityType="Self.SellingPointCategory" />
+          <EntitySet Name="Shawarmas" EntityType="Self.Shawarma" />
+          <EntitySet Name="ShawarmaRecipes" EntityType="Self.ShawarmaRecipe" />
+          <EntitySet Name="TimeControllers" EntityType="Self.TimeController" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
           <AssociationSet Name="Ingradient_fk0" Association="Self.Ingradient_fk0">
-            <End Role="IngradientCategory" EntitySet="IngradientCategory" />
-            <End Role="Ingradient" EntitySet="Ingradient" />
+            <End Role="IngradientCategory" EntitySet="IngradientCategories" />
+            <End Role="Ingradient" EntitySet="Ingradients" />
           </AssociationSet>
           <AssociationSet Name="ShawarmaRecipe_fk1" Association="Self.ShawarmaRecipe_fk1">
-            <End Role="Ingradient" EntitySet="Ingradient" />
-            <End Role="ShawarmaRecipe" EntitySet="ShawarmaRecipe" />
+            <End Role="Ingradient" EntitySet="Ingradients" />
+            <End Role="ShawarmaRecipe" EntitySet="ShawarmaRecipes" />
           </AssociationSet>
           <AssociationSet Name="OrderDetails_fk0" Association="Self.OrderDetails_fk0">
-            <End Role="OrderHeader" EntitySet="OrderHeader" />
+            <End Role="OrderHeader" EntitySet="OrderHeaders" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
           <AssociationSet Name="OrderHeader_fk0" Association="Self.OrderHeader_fk0">
-            <End Role="Seller" EntitySet="Seller" />
-            <End Role="OrderHeader" EntitySet="OrderHeader" />
+            <End Role="Seller" EntitySet="Sellers" />
+            <End Role="OrderHeader" EntitySet="OrderHeaders" />
           </AssociationSet>
           <AssociationSet Name="PriceController_fk0" Association="Self.PriceController_fk0">
-            <End Role="Shawarma" EntitySet="Shawarma" />
-            <End Role="PriceController" EntitySet="PriceController" />
+            <End Role="Shawarma" EntitySet="Shawarmas" />
+            <End Role="PriceController" EntitySet="PriceControllers" />
           </AssociationSet>
           <AssociationSet Name="PriceController_fk1" Association="Self.PriceController_fk1">
-            <End Role="SellingPoint" EntitySet="SellingPoint" />
-            <End Role="PriceController" EntitySet="PriceController" />
+            <End Role="SellingPoint" EntitySet="SellingPoints" />
+            <End Role="PriceController" EntitySet="PriceControllers" />
           </AssociationSet>
           <AssociationSet Name="Seller_fk0" Association="Self.Seller_fk0">
-            <End Role="SellingPoint" EntitySet="SellingPoint" />
-            <End Role="Seller" EntitySet="Seller" />
+            <End Role="SellingPoint" EntitySet="SellingPoints" />
+            <End Role="Seller" EntitySet="Sellers" />
           </AssociationSet>
           <AssociationSet Name="TimeController_fk0" Association="Self.TimeController_fk0">
-            <End Role="Seller" EntitySet="Seller" />
-            <End Role="TimeController" EntitySet="TimeController" />
+            <End Role="Seller" EntitySet="Sellers" />
+            <End Role="TimeController" EntitySet="TimeControllers" />
           </AssociationSet>
           <AssociationSet Name="SellingPoint_fk0" Association="Self.SellingPoint_fk0">
-            <End Role="SellingPointCategory" EntitySet="SellingPointCategory" />
-            <End Role="SellingPoint" EntitySet="SellingPoint" />
+            <End Role="SellingPointCategory" EntitySet="SellingPointCategories" />
+            <End Role="SellingPoint" EntitySet="SellingPoints" />
           </AssociationSet>
           <AssociationSet Name="OrderDetails_fk1" Association="Self.OrderDetails_fk1">
-            <End Role="Shawarma" EntitySet="Shawarma" />
+            <End Role="Shawarma" EntitySet="Shawarmas" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
           <AssociationSet Name="ShawarmaRecipe_fk0" Association="Self.ShawarmaRecipe_fk0">
-            <End Role="Shawarma" EntitySet="Shawarma" />
-            <End Role="ShawarmaRecipe" EntitySet="ShawarmaRecipe" />
+            <End Role="Shawarma" EntitySet="Shawarmas" />
+            <End Role="ShawarmaRecipe" EntitySet="ShawarmaRecipes" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -612,7 +612,7 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ShawarmaDBModelStoreContainer" CdmEntityContainer="ShawarmaDBEntities">
-          <EntitySetMapping Name="Ingradient">
+          <EntitySetMapping Name="Ingradients">
             <EntityTypeMapping TypeName="ShawarmaDBModel.Ingradient">
               <MappingFragment StoreEntitySet="Ingradient">
                 <ScalarProperty Name="IngradientId" ColumnName="IngradientId" />
@@ -622,7 +622,7 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="IngradientCategory">
+          <EntitySetMapping Name="IngradientCategories">
             <EntityTypeMapping TypeName="ShawarmaDBModel.IngradientCategory">
               <MappingFragment StoreEntitySet="IngradientCategory">
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
@@ -630,7 +630,7 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="OrderHeader">
+          <EntitySetMapping Name="OrderHeaders">
             <EntityTypeMapping TypeName="ShawarmaDBModel.OrderHeader">
               <MappingFragment StoreEntitySet="OrderHeader">
                 <ScalarProperty Name="OrderHeaderId" ColumnName="OrderHeaderId" />
@@ -639,7 +639,7 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PriceController">
+          <EntitySetMapping Name="PriceControllers">
             <EntityTypeMapping TypeName="ShawarmaDBModel.PriceController">
               <MappingFragment StoreEntitySet="PriceController">
                 <ScalarProperty Name="PriceControllerId" ColumnName="PriceControllerId" />
@@ -650,7 +650,7 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Seller">
+          <EntitySetMapping Name="Sellers">
             <EntityTypeMapping TypeName="ShawarmaDBModel.Seller">
               <MappingFragment StoreEntitySet="Seller">
                 <ScalarProperty Name="SellerId" ColumnName="SellerId" />
@@ -659,7 +659,7 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SellingPoint">
+          <EntitySetMapping Name="SellingPoints">
             <EntityTypeMapping TypeName="ShawarmaDBModel.SellingPoint">
               <MappingFragment StoreEntitySet="SellingPoint">
                 <ScalarProperty Name="SellingPointId" ColumnName="SellingPointId" />
@@ -669,7 +669,7 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SellingPointCategory">
+          <EntitySetMapping Name="SellingPointCategories">
             <EntityTypeMapping TypeName="ShawarmaDBModel.SellingPointCategory">
               <MappingFragment StoreEntitySet="SellingPointCategory">
                 <ScalarProperty Name="SellingPointCategoryId" ColumnName="SellingPointCategoryId" />
@@ -677,7 +677,7 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Shawarma">
+          <EntitySetMapping Name="Shawarmas">
             <EntityTypeMapping TypeName="ShawarmaDBModel.Shawarma">
               <MappingFragment StoreEntitySet="Shawarma">
                 <ScalarProperty Name="ShawarmaId" ColumnName="ShawarmaId" />
@@ -686,7 +686,7 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ShawarmaRecipe">
+          <EntitySetMapping Name="ShawarmaRecipes">
             <EntityTypeMapping TypeName="ShawarmaDBModel.ShawarmaRecipe">
               <MappingFragment StoreEntitySet="ShawarmaRecipe">
                 <ScalarProperty Name="ShawarmaRecipeId" ColumnName="ShawarmaRecipeId" />
@@ -696,7 +696,7 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TimeController">
+          <EntitySetMapping Name="TimeControllers">
             <EntityTypeMapping TypeName="ShawarmaDBModel.TimeController">
               <MappingFragment StoreEntitySet="TimeController">
                 <ScalarProperty Name="TimeControllerId" ColumnName="TimeControllerId" />
@@ -707,7 +707,7 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderDetails">
-            <EntityTypeMapping TypeName="ShawarmaDBModel.OrderDetails">
+            <EntityTypeMapping TypeName="ShawarmaDBModel.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetails">
                 <ScalarProperty Name="OrderHeaderId" ColumnName="OrderHeaderId" />
                 <ScalarProperty Name="ShawarmaId" ColumnName="ShawarmaId" />
@@ -729,7 +729,7 @@ warning 6002: The table/view 'C:\USERS\POLINA\DOCUMENTS\GIT\NET.W.2016.01.FREYDL
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

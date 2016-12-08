@@ -17,13 +17,13 @@ namespace ShawarmaProject
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public IngradientCategory()
         {
-            this.Ingradient = new HashSet<Ingradient>();
+            this.Ingradients = new HashSet<Ingradient>();
         }
     
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ingradient> Ingradient { get; set; }
+        public virtual ICollection<Ingradient> Ingradients { get; set; }
     }
 }

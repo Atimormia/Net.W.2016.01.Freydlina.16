@@ -17,7 +17,7 @@ namespace ShawarmaProject
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public OrderHeader()
         {
-            this.OrderDetails = new HashSet<OrderDetails>();
+            this.OrderDetails = new HashSet<OrderDetail>();
         }
     
         public int OrderHeaderId { get; set; }
@@ -25,7 +25,7 @@ namespace ShawarmaProject
         public int SellerId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetails> OrderDetails { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         public virtual Seller Seller { get; set; }
     }
 }

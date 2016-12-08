@@ -12,7 +12,7 @@ namespace ShawarmaProject
     using System;
     using System.Collections.Generic;
     
-    public partial class OrderDetails
+    public partial class OrderDetail
     {
         public int OrderHeaderId { get; set; }
         public int ShawarmaId { get; set; }

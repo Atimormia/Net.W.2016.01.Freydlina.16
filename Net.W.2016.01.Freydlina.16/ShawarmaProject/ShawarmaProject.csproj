@@ -66,14 +66,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DatabaseQueries.cs" />
     <Compile Include="Ingradient.cs">
       <DependentUpon>ShawarmaDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="IngradientCategory.cs">
       <DependentUpon>ShawarmaDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="OrderDetails.cs">
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="OrderDetail.cs">
       <DependentUpon>ShawarmaDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="OrderHeader.cs">
@@ -137,14 +138,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
     <EntityDeploy Include="ShawarmaDBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ShawarmaDBModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="packages.config" />
     <None Include="ShawarmaDBModel.edmx.diagram">
       <DependentUpon>ShawarmaDBModel.edmx</DependentUpon>
     </None>
