@@ -18,10 +18,13 @@ namespace ShawarmaProject
             {
                 Ingradient ingradient = ctx.Ingradients.FirstOrDefault(ingr => ingr.IngradientName == name);
                 if (ingradient != null)
+                {
                     ingradient.TotalWeight += weight;
+                }
                 else
                 {
-                    IngradientCategory category = ctx.IngradientCategories.FirstOrDefault(ingr => ingr.CategoryName == categoryName);
+                    IngradientCategory category =
+                        ctx.IngradientCategories.FirstOrDefault(ingr => ingr.CategoryName == categoryName);
                     if (categoryName != "")
                     {
                         int categoryId;
@@ -52,6 +55,7 @@ namespace ShawarmaProject
                         });
                     }
                 }
+
                 return Commit(ctx);
             }
         }
@@ -74,7 +78,7 @@ namespace ShawarmaProject
                             ing => ing.IngradientName == ingradientWeightAccording.IngradientName);
                     if (ingradient == null)
                     {
-                        AddIngredient(ingradientWeightAccording.IngradientName, ingradientWeightAccording.Weight);
+                        AddIngredient(ingradientWeightAccording.IngradientName, 0);
                         ingradient =
                             ctx.Ingradients.FirstOrDefault(
                                 ing => ing.IngradientName == ingradientWeightAccording.IngradientName);
@@ -91,7 +95,7 @@ namespace ShawarmaProject
         {
             try
             {
-                ctx.SaveChanges();
+                Debug.WriteLine("Saving changes success: "+ctx.SaveChanges());
                 return true;
             }
             catch (DbUpdateException e)
@@ -99,29 +103,22 @@ namespace ShawarmaProject
                 var sb = new StringBuilder();
                 sb.AppendLine($"DbUpdateException error details - {e?.InnerException?.InnerException?.Message}");
                 foreach (var eve in e.Entries)
-                {
                     sb.AppendLine($"Entity of type {eve.Entity.GetType().Name} in state {eve.State} could not be updated");
-                }
                 Debug.Write(sb.ToString());
-
                 return false;
             }
             catch (DbEntityValidationException ex)
             {
                 foreach (var entityValidationErrors in ex.EntityValidationErrors)
-                {
                     foreach (var validationError in entityValidationErrors.ValidationErrors)
-                    {
                         Debug.Write("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
-                    }
-                }
                 return false;
             }
         }
 
     }
 
-    public class IngradientWeight
+    public struct IngradientWeight
     {
         public string IngradientName { get; set; }
         public int Weight { get; set; }

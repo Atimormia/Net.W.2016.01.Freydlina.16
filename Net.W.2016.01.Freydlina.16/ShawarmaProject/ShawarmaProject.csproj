@@ -120,7 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ShawarmaDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ShawarmaDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -133,8 +133,8 @@
       <LastGenOutput>ShawarmaDBModel.cs</LastGenOutput>
     </Content>
     <Content Include="ShawarmaDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>ShawarmaDB.mdf</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
