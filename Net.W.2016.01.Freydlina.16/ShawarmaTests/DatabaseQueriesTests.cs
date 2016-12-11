@@ -20,7 +20,9 @@ namespace ShawarmaTests
         [Test, TestCaseSource(nameof(TestCasesForAddIngradient))]
         public bool TestAddIngradient(string name, int weight, string categoryName)
         {
-            return DatabaseQueries.AddIngredient(name, weight, categoryName);
+            bool result = DatabaseQueries.AddIngredient(name, weight, categoryName);
+            DatabaseQueries.ShowIngradients();
+            return result;
         }
 
         public static IEnumerable<TestCaseData> TestCasesForAddRecipe
@@ -31,13 +33,13 @@ namespace ShawarmaTests
                 {
                     new IngradientWeight {IngradientName = "seitan", Weight = 500},
                     new IngradientWeight {IngradientName = "lemon juice", Weight = 5},
-                    new IngradientWeight {IngradientName = "Garam Masala", Weight = 5},
-                    new IngradientWeight {IngradientName = "Paprika", Weight = 2},
-                    new IngradientWeight {IngradientName = "Cumin", Weight = 1},
-                    new IngradientWeight {IngradientName = "Salt", Weight = 2},
+                    new IngradientWeight {IngradientName = "garam masala", Weight = 5},
+                    new IngradientWeight {IngradientName = "paprika", Weight = 2},
+                    new IngradientWeight {IngradientName = "cumin", Weight = 1},
+                    new IngradientWeight {IngradientName = "salt", Weight = 2},
                     new IngradientWeight {IngradientName = "soy yogurt", Weight = 100},
-                    new IngradientWeight {IngradientName = "Malt Vinegar", Weight = 5},
-                    new IngradientWeight {IngradientName = "Garlic", Weight = 2},
+                    new IngradientWeight {IngradientName = "vinegar", Weight = 5},
+                    new IngradientWeight {IngradientName = "garlic", Weight = 2},
                 };
                 yield return new TestCaseData("Vegetarian", ingradientWeights, 20).Returns(true);
             }
@@ -45,7 +47,17 @@ namespace ShawarmaTests
         [Test, TestCaseSource(nameof(TestCasesForAddRecipe))]
         public bool TestAddRecipe(string shawarmaName, IngradientWeight[] ingradientWeightAccordings, int cookingTime)
         {
-            return DatabaseQueries.AddRecipe(shawarmaName,ingradientWeightAccordings,cookingTime);
+            bool result = DatabaseQueries.AddRecipe(shawarmaName, ingradientWeightAccordings, cookingTime);
+            DatabaseQueries.ShowIngradients();
+            return result;
+        }
+
+
+
+        [Test]
+        public void View()
+        {
+            DatabaseQueries.ShowIngradients();
         }
 
         public void FixEfProviderServicesProblem()
