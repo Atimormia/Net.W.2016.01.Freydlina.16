@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShawarmaProject", "ShawarmaProject\ShawarmaProject.csproj", "{F2F2657C-C72A-4653-8279-1317C3CF66E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShawarmaProject.WebUI", "ShawarmaProject.WebUI\ShawarmaProject.WebUI.csproj", "{405496CE-58FE-417F-BFC7-FF33DCD0D58B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShawarmaTests", "ShawarmaTests\ShawarmaTests.csproj", "{5EDCF766-05E0-4418-94B8-62682636E3D1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShawarmaProject.DB", "ShawarmaProject.DB\ShawarmaProject.DB.csproj", "{F2F2657C-C72A-4653-8279-1317C3CF66E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShawarmaProject.DB.Tests", "ShawarmaProject.DB.Tests\ShawarmaProject.DB.Tests.csproj", "{5EDCF766-05E0-4418-94B8-62682636E3D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{405496CE-58FE-417F-BFC7-FF33DCD0D58B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{405496CE-58FE-417F-BFC7-FF33DCD0D58B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{405496CE-58FE-417F-BFC7-FF33DCD0D58B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{405496CE-58FE-417F-BFC7-FF33DCD0D58B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F2F2657C-C72A-4653-8279-1317C3CF66E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F2F2657C-C72A-4653-8279-1317C3CF66E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2F2657C-C72A-4653-8279-1317C3CF66E8}.Release|Any CPU.ActiveCfg = Release|Any CPU

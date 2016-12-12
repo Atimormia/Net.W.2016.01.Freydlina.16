@@ -1,0 +1,33 @@
+﻿@model ShawarmaProject.DB.Shawarma
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Shawarma</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ShawarmaName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShawarmaName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CookingTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CookingTime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
