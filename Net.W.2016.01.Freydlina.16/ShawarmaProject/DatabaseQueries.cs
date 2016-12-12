@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
@@ -68,18 +69,31 @@ namespace ShawarmaProject
             Debug.WriteLine("---End---");
         }
 
+        public static void ShowShawarmas()
+        {
+            Debug.WriteLine("---Shawarmas---");
+            using (var ctx = new ShawarmaDBEntities())
+            {
+                foreach (var shawarma in ctx.Shawarmas)
+                {
+                    Debug.WriteLine(shawarma.ShawarmaName);
+                }
+            }
+            Debug.WriteLine("---End---");
+        }
+
         public static bool ShawarmaSeillng(string shawarmaName)
         {
             using (var ctx = new ShawarmaDBEntities())
             {
                 Shawarma shawarma = ctx.Shawarmas.FirstOrDefault(sh => sh.ShawarmaName == shawarmaName);
-                if (shawarma == null) return false; // there is not specified shawarma
+                if (shawarma == null) throw new Exception("there is not specified shawarma");
                 foreach (var recipe in ctx.ShawarmaRecipes.Where(sh => sh.ShawarmaId == shawarma.ShawarmaId))
                 {
                     if (recipe.Ingradient.TotalWeight >= recipe.Weight)
                         recipe.Ingradient.TotalWeight -= recipe.Weight;
                     else
-                        return false; //not enough ingradients
+                        throw new Exception("not enough ingradient "+recipe.Ingradient.IngradientName);
                 }
                 return Commit(ctx);
             }
@@ -233,10 +247,13 @@ namespace ShawarmaProject
                     TimeSpan period = end - start;
                     result += period.Minutes*workingRate;
                 }
+                //foreach (var orderHeader in seller.OrderHeaders)
+                //    foreach (var orderDetail in orderHeader.OrderDetails)
+                //        result += orderDetail.Shawarma.CookingTime*orderDetail.Quantity*cookingRate;
                 result +=
                     seller.OrderHeaders.SelectMany(orderHeader => orderHeader.OrderDetails)
                         .Sum(orderDetail => orderDetail.Shawarma.CookingTime*cookingRate);
-                return result;
+            return result;
             }
         }
 
@@ -250,7 +267,7 @@ namespace ShawarmaProject
             catch (DbUpdateException e)
             {
                 var sb = new StringBuilder();
-                sb.AppendLine($"DbUpdateException error details - {e?.InnerException?.InnerException?.Message}");
+                sb.AppendLine($"DbUpdateException error details - {e.InnerException?.InnerException?.Message}");
                 foreach (var eve in e.Entries)
                     sb.AppendLine($"Entity of type {eve.Entity.GetType().Name} in state {eve.State} could not be updated");
                 Debug.Write(sb.ToString());
