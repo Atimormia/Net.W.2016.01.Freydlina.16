@@ -258,6 +258,19 @@ namespace ShawarmaProject.DB
 
     }
 
+    public class DatabaseRepresentation
+    {
+        public static IEnumerable<IngradientCategory> GetIngredientCategories()
+        {
+            using (var ctx = new ShawarmaDBEntities())
+            {
+                var result = new List<IngradientCategory>(ctx.IngradientCategories);
+                result.Add(new IngradientCategory {CategoryName = ""});
+                return result;
+            }
+        }
+    }
+
     public struct IngradientWeight
     {
         public string IngradientName { get; set; }

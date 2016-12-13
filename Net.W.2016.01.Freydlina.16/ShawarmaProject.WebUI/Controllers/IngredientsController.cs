@@ -11,7 +11,7 @@ using ShawarmaProject.DB;
 
 namespace ShawarmaProject.WebUI.Controllers
 {
-    public class IngradientsController : Controller
+    public class IngredientsController : Controller
     {
         private ShawarmaDBEntities db = new ShawarmaDBEntities();
 
