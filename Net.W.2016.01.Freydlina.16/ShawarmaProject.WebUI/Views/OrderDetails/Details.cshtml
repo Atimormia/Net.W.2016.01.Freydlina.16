@@ -1,0 +1,49 @@
+﻿@model ShawarmaProject.DB.OrderDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>OrderDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderHeader.OrderDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderHeader.OrderDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderHeader.Seller.SellerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderHeader.Seller.SellerName)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Shawarma.ShawarmaName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Shawarma.ShawarmaName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

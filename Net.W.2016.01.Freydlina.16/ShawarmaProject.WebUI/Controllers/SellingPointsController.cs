@@ -11,55 +11,55 @@ using ShawarmaProject.DB;
 
 namespace ShawarmaProject.WebUI.Controllers
 {
-    public class IngradientsController : Controller
+    public class SellingPointsController : Controller
     {
         private ShawarmaDBEntities db = new ShawarmaDBEntities();
 
-        // GET: Ingradients
+        // GET: SellingPoints
         public async Task<ActionResult> Index()
         {
-            var ingradients = db.Ingradients.Include(i => i.IngradientCategory);
-            return View(await ingradients.ToListAsync());
+            var sellingPoints = db.SellingPoints.Include(s => s.SellingPointCategory1);
+            return View(await sellingPoints.ToListAsync());
         }
 
-        // GET: Ingradients/Details/5
+        // GET: SellingPoints/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ingradient ingradient = await db.Ingradients.FindAsync(id);
-            if (ingradient == null)
+            SellingPoint sellingPoint = await db.SellingPoints.FindAsync(id);
+            if (sellingPoint == null)
             {
                 return HttpNotFound();
             }
-            return View(ingradient);
+            return View(sellingPoint);
         }
 
-        // GET: Ingradients/Create
+        // GET: SellingPoints/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(db.IngradientCategories, "CategoryId", "CategoryName");
+            ViewBag.SellingPointCategory = new SelectList(db.SellingPointCategories, "SellingPointCategoryId", "SellingPointCategoryName");
             return View();
         }
 
-        // POST: Ingradients/Create
+        // POST: SellingPoints/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "IngradientId,IngradientName,TotalWeight,CategoryId")] Ingradient ingradient)
+        public async Task<ActionResult> Create([Bind(Include = "SellingPointId,Address,SellingPointCategory,ShawarmaTitle")] SellingPoint sellingPoint)
         {
             if (ModelState.IsValid)
             {
-                db.Ingradients.Add(ingradient);
+                db.SellingPoints.Add(sellingPoint);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoryId = new SelectList(db.IngradientCategories, "CategoryId", "CategoryName", ingradient.CategoryId);
-            return View(ingradient);
+            ViewBag.SellingPointCategory = new SelectList(db.SellingPointCategories, "SellingPointCategoryId", "SellingPointCategoryName", sellingPoint.SellingPointCategory);
+            return View(sellingPoint);
         }
         
         protected override void Dispose(bool disposing)

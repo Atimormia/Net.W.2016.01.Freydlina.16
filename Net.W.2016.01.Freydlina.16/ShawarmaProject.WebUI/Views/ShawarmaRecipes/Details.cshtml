@@ -1,0 +1,41 @@
+﻿@model ShawarmaProject.DB.ShawarmaRecipe
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ShawarmaRecipe</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ingradient.IngradientName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ingradient.IngradientName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Shawarma.ShawarmaName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Shawarma.ShawarmaName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Weight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Weight)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

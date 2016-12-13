@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ShawarmaProject.DB.OrderDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderHeader.OrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderHeader.Seller.SellerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Shawarma.ShawarmaName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderHeader.OrderDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderHeader.Seller.SellerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Shawarma.ShawarmaName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) 
+        </td>
+    </tr>
+}
+
+</table>

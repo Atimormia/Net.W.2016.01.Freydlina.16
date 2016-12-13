@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ShawarmaProject.DB.TimeController>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Seller.SellerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkEnd)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seller.SellerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkStart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkEnd)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.TimeControllerId }) 
+        </td>
+    </tr>
+}
+
+</table>

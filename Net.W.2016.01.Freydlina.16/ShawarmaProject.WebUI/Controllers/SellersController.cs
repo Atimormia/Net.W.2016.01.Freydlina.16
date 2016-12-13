@@ -11,55 +11,55 @@ using ShawarmaProject.DB;
 
 namespace ShawarmaProject.WebUI.Controllers
 {
-    public class IngradientsController : Controller
+    public class SellersController : Controller
     {
         private ShawarmaDBEntities db = new ShawarmaDBEntities();
 
-        // GET: Ingradients
+        // GET: Sellers
         public async Task<ActionResult> Index()
         {
-            var ingradients = db.Ingradients.Include(i => i.IngradientCategory);
-            return View(await ingradients.ToListAsync());
+            var sellers = db.Sellers.Include(s => s.SellingPoint);
+            return View(await sellers.ToListAsync());
         }
 
-        // GET: Ingradients/Details/5
+        // GET: Sellers/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ingradient ingradient = await db.Ingradients.FindAsync(id);
-            if (ingradient == null)
+            Seller seller = await db.Sellers.FindAsync(id);
+            if (seller == null)
             {
                 return HttpNotFound();
             }
-            return View(ingradient);
+            return View(seller);
         }
 
-        // GET: Ingradients/Create
+        // GET: Sellers/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(db.IngradientCategories, "CategoryId", "CategoryName");
+            ViewBag.SellingPointId = new SelectList(db.SellingPoints, "SellingPointId", "Address");
             return View();
         }
 
-        // POST: Ingradients/Create
+        // POST: Sellers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "IngradientId,IngradientName,TotalWeight,CategoryId")] Ingradient ingradient)
+        public async Task<ActionResult> Create([Bind(Include = "SellerId,SellerName,SellingPointId")] Seller seller)
         {
             if (ModelState.IsValid)
             {
-                db.Ingradients.Add(ingradient);
+                db.Sellers.Add(seller);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoryId = new SelectList(db.IngradientCategories, "CategoryId", "CategoryName", ingradient.CategoryId);
-            return View(ingradient);
+            ViewBag.SellingPointId = new SelectList(db.SellingPoints, "SellingPointId", "Address", seller.SellingPointId);
+            return View(seller);
         }
         
         protected override void Dispose(bool disposing)

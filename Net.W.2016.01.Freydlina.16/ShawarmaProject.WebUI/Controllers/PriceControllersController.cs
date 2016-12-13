@@ -11,55 +11,57 @@ using ShawarmaProject.DB;
 
 namespace ShawarmaProject.WebUI.Controllers
 {
-    public class IngradientsController : Controller
+    public class PriceControllersController : Controller
     {
         private ShawarmaDBEntities db = new ShawarmaDBEntities();
 
-        // GET: Ingradients
+        // GET: PriceControllers
         public async Task<ActionResult> Index()
         {
-            var ingradients = db.Ingradients.Include(i => i.IngradientCategory);
-            return View(await ingradients.ToListAsync());
+            var priceControllers = db.PriceControllers.Include(p => p.Shawarma).Include(p => p.SellingPoint);
+            return View(await priceControllers.ToListAsync());
         }
 
-        // GET: Ingradients/Details/5
+        // GET: PriceControllers/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ingradient ingradient = await db.Ingradients.FindAsync(id);
-            if (ingradient == null)
+            PriceController priceController = await db.PriceControllers.FindAsync(id);
+            if (priceController == null)
             {
                 return HttpNotFound();
             }
-            return View(ingradient);
+            return View(priceController);
         }
 
-        // GET: Ingradients/Create
+        // GET: PriceControllers/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(db.IngradientCategories, "CategoryId", "CategoryName");
+            ViewBag.ShwarmaId = new SelectList(db.Shawarmas, "ShawarmaId", "ShawarmaName");
+            ViewBag.SellingPointId = new SelectList(db.SellingPoints, "SellingPointId", "Address");
             return View();
         }
 
-        // POST: Ingradients/Create
+        // POST: PriceControllers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "IngradientId,IngradientName,TotalWeight,CategoryId")] Ingradient ingradient)
+        public async Task<ActionResult> Create([Bind(Include = "PriceControllerId,ShwarmaId,Price,SellingPointId,Comment")] PriceController priceController)
         {
             if (ModelState.IsValid)
             {
-                db.Ingradients.Add(ingradient);
+                db.PriceControllers.Add(priceController);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoryId = new SelectList(db.IngradientCategories, "CategoryId", "CategoryName", ingradient.CategoryId);
-            return View(ingradient);
+            ViewBag.ShwarmaId = new SelectList(db.Shawarmas, "ShawarmaId", "ShawarmaName", priceController.ShwarmaId);
+            ViewBag.SellingPointId = new SelectList(db.SellingPoints, "SellingPointId", "Address", priceController.SellingPointId);
+            return View(priceController);
         }
         
         protected override void Dispose(bool disposing)

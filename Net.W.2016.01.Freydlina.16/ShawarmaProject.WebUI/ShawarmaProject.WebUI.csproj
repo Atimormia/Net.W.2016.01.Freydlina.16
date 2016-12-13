@@ -130,7 +130,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IngradientsController.cs" />
+    <Compile Include="Controllers\OrderDetailsController.cs" />
+    <Compile Include="Controllers\PriceControllersController.cs" />
+    <Compile Include="Controllers\SellersController.cs" />
+    <Compile Include="Controllers\SellingPointsController.cs" />
+    <Compile Include="Controllers\ShawarmaRecipesController.cs" />
     <Compile Include="Controllers\ShawarmasController.cs" />
+    <Compile Include="Controllers\TimeControllersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -169,10 +175,27 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Ingradients\Details.cshtml" />
-    <Content Include="Views\Ingradients\Index.cshtml" />
     <Content Include="Views\Shawarmas\Details.cshtml" />
     <Content Include="Views\Shawarmas\Index.cshtml" />
+    <Content Include="Views\ShawarmaRecipes\Create.cshtml" />
+    <Content Include="Views\ShawarmaRecipes\Details.cshtml" />
+    <Content Include="Views\ShawarmaRecipes\Index.cshtml" />
+    <Content Include="Views\PriceControllers\Create.cshtml" />
+    <Content Include="Views\PriceControllers\Details.cshtml" />
+    <Content Include="Views\PriceControllers\Index.cshtml" />
+    <Content Include="Views\SellingPoints\Create.cshtml" />
+    <Content Include="Views\SellingPoints\Details.cshtml" />
+    <Content Include="Views\SellingPoints\Index.cshtml" />
+    <Content Include="Views\Sellers\Create.cshtml" />
+    <Content Include="Views\Sellers\Details.cshtml" />
+    <Content Include="Views\Sellers\Index.cshtml" />
+    <Content Include="Views\Ingradients\Create.cshtml" />
+    <Content Include="Views\Ingradients\Details.cshtml" />
+    <Content Include="Views\Ingradients\Index.cshtml" />
+    <Content Include="Views\TimeControllers\Details.cshtml" />
+    <Content Include="Views\TimeControllers\Index.cshtml" />
+    <Content Include="Views\OrderDetails\Details.cshtml" />
+    <Content Include="Views\OrderDetails\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -185,6 +208,12 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShawarmaProject.DB\ShawarmaProject.DB.csproj">
+      <Project>{f2f2657c-c72a-4653-8279-1317c3cf66e8}</Project>
+      <Name>ShawarmaProject.DB</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

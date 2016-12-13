@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ShawarmaProject.DB.PriceController>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Shawarma.ShawarmaName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SellingPoint.ShawarmaTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Shawarma.ShawarmaName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SellingPoint.ShawarmaTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.PriceControllerId }) 
+        </td>
+    </tr>
+}
+
+</table>

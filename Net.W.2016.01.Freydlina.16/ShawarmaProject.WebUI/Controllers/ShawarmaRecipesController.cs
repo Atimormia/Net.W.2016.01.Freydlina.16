@@ -11,57 +11,59 @@ using ShawarmaProject.DB;
 
 namespace ShawarmaProject.WebUI.Controllers
 {
-    public class IngradientsController : Controller
+    public class ShawarmaRecipesController : Controller
     {
         private ShawarmaDBEntities db = new ShawarmaDBEntities();
 
-        // GET: Ingradients
+        // GET: ShawarmaRecipes
         public async Task<ActionResult> Index()
         {
-            var ingradients = db.Ingradients.Include(i => i.IngradientCategory);
-            return View(await ingradients.ToListAsync());
+            var shawarmaRecipes = db.ShawarmaRecipes.Include(s => s.Ingradient).Include(s => s.Shawarma);
+            return View(await shawarmaRecipes.ToListAsync());
         }
 
-        // GET: Ingradients/Details/5
+        // GET: ShawarmaRecipes/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ingradient ingradient = await db.Ingradients.FindAsync(id);
-            if (ingradient == null)
+            ShawarmaRecipe shawarmaRecipe = await db.ShawarmaRecipes.FindAsync(id);
+            if (shawarmaRecipe == null)
             {
                 return HttpNotFound();
             }
-            return View(ingradient);
+            return View(shawarmaRecipe);
         }
 
-        // GET: Ingradients/Create
+        // GET: ShawarmaRecipes/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(db.IngradientCategories, "CategoryId", "CategoryName");
+            ViewBag.IngradientId = new SelectList(db.Ingradients, "IngradientId", "IngradientName");
+            ViewBag.ShawarmaId = new SelectList(db.Shawarmas, "ShawarmaId", "ShawarmaName");
             return View();
         }
 
-        // POST: Ingradients/Create
+        // POST: ShawarmaRecipes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "IngradientId,IngradientName,TotalWeight,CategoryId")] Ingradient ingradient)
+        public async Task<ActionResult> Create([Bind(Include = "ShawarmaRecipeId,ShawarmaId,IngradientId,Weight")] ShawarmaRecipe shawarmaRecipe)
         {
             if (ModelState.IsValid)
             {
-                db.Ingradients.Add(ingradient);
+                db.ShawarmaRecipes.Add(shawarmaRecipe);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoryId = new SelectList(db.IngradientCategories, "CategoryId", "CategoryName", ingradient.CategoryId);
-            return View(ingradient);
+            ViewBag.IngradientId = new SelectList(db.Ingradients, "IngradientId", "IngradientName", shawarmaRecipe.IngradientId);
+            ViewBag.ShawarmaId = new SelectList(db.Shawarmas, "ShawarmaId", "ShawarmaName", shawarmaRecipe.ShawarmaId);
+            return View(shawarmaRecipe);
         }
-        
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

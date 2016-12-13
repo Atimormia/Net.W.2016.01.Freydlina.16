@@ -1,0 +1,41 @@
+﻿@model ShawarmaProject.DB.TimeController
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TimeController</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Seller.SellerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seller.SellerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkEnd)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
