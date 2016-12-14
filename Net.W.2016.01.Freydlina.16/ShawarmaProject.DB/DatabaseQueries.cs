@@ -56,7 +56,7 @@ namespace ShawarmaProject.DB
             }
         }
         
-        public static bool ShawarmaSeillng(string shawarmaName)
+        public static bool ShawarmaSelling(string shawarmaName)
         {
             using (var ctx = new ShawarmaDBEntities())
             {
@@ -104,7 +104,7 @@ namespace ShawarmaProject.DB
             }
         }
 
-        public static bool NewPrice(string sellingPointTitle, string shawarmaName, decimal newPrice, string comment)
+        public static bool AddPrice(string sellingPointTitle, string shawarmaName, decimal newPrice, string comment)
         {
             using (var ctx = new ShawarmaDBEntities())
             {
@@ -149,7 +149,7 @@ namespace ShawarmaProject.DB
             }
         }
 
-        public static bool AddNewSeller(string sellerName, string sellingPointName)
+        public static bool AddSeller(string sellerName, string sellingPointName)
         {
             using (var ctx = new ShawarmaDBEntities())
             {
@@ -266,6 +266,42 @@ namespace ShawarmaProject.DB
             {
                 var result = new List<IngradientCategory>(ctx.IngradientCategories);
                 result.Add(new IngradientCategory {CategoryName = ""});
+                return result;
+            }
+        }
+
+        public static IEnumerable<SellingPoint> GetSellingPoints()
+        {
+            using (var ctx = new ShawarmaDBEntities())
+            {
+                var result = new List<SellingPoint>(ctx.SellingPoints);
+                return result;
+            }
+        }
+
+        public static IEnumerable<Shawarma> GetShawarmas()
+        {
+            using (var ctx = new ShawarmaDBEntities())
+            {
+                var result = new List<Shawarma>(ctx.Shawarmas);
+                return result;
+            }
+        }
+
+        public static IEnumerable<SellingPointCategory> GetSellingPointCategories()
+        {
+            using (var ctx = new ShawarmaDBEntities())
+            {
+                var result = new List<SellingPointCategory>(ctx.SellingPointCategories);
+                return result;
+            }
+        }
+
+        public static IEnumerable<Ingradient> GetIngradients()
+        {
+            using (var ctx = new ShawarmaDBEntities())
+            {
+                var result = new List<Ingradient>(ctx.Ingradients);
                 return result;
             }
         }

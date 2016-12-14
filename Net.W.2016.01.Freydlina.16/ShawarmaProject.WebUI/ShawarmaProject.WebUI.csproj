@@ -198,6 +198,13 @@
     <Content Include="Views\OrderDetails\Details.cshtml" />
     <Content Include="Views\OrderDetails\Index.cshtml" />
     <Content Include="Views\DatabaseQueries\AddIngredient.cshtml" />
+    <Content Include="Views\DatabaseQueries\ShawarmaSelling.cshtml" />
+    <Content Include="Views\DatabaseQueries\AddPrice.cshtml" />
+    <Content Include="Views\DatabaseQueries\AddSellingPoint.cshtml" />
+    <Content Include="Views\DatabaseQueries\AddSeller.cshtml" />
+    <Content Include="Views\DatabaseQueries\AddRecipeItem.cshtml" />
+    <Content Include="Views\DatabaseQueries\AddRecipe.cshtml" />
+    <Content Include="Views\DatabaseQueries\AddRecipeShawarma.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

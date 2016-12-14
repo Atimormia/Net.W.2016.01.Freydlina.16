@@ -34,7 +34,7 @@ namespace ShawarmaProject.DB.Tests
         [Test, TestCaseSource(nameof(TestCasesForShawarmaSeillng))]
         public bool TestShawarmaSeillng(string shawarmaName)
         {
-            return DatabaseQueries.ShawarmaSeillng(shawarmaName);
+            return DatabaseQueries.ShawarmaSelling(shawarmaName);
         }
 
         public static IEnumerable<TestCaseData> TestCasesForAddRecipe
@@ -72,7 +72,7 @@ namespace ShawarmaProject.DB.Tests
         [Test, TestCaseSource(nameof(TestCasesForNewPrice))]
         public bool TestNewPrice(string sellingPointTitle, string shawarmaName, decimal newPrice, string comment)
         { 
-            return DatabaseQueries.NewPrice(sellingPointTitle, shawarmaName, newPrice, comment);
+            return DatabaseQueries.AddPrice(sellingPointTitle, shawarmaName, newPrice, comment);
         }
 
         public static IEnumerable<TestCaseData> TestCasesForSellingPoint
@@ -98,7 +98,7 @@ namespace ShawarmaProject.DB.Tests
         [Test, TestCaseSource(nameof(TestCasesForAddNewSeller))]
         public bool TestAddNewSeller(string sellerName, string sellingPointName)
         {
-            return DatabaseQueries.AddNewSeller(sellerName, sellingPointName);
+            return DatabaseQueries.AddSeller(sellerName, sellingPointName);
         }
 
         public static IEnumerable<TestCaseData> TestCasesForSellingPointRevenue
