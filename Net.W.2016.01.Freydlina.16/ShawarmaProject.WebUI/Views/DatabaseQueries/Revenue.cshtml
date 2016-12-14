@@ -1,0 +1,60 @@
+﻿@model ShawarmaProject.WebUI.ViewModels.RevenueViewModel
+
+@{
+    ViewBag.Title = "Revenue";
+}
+
+<h2>Revenue</h2>
+
+
+@using (Html.BeginForm("Revenue","DatabaseQueries")) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.SellingPointTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("SellingPointTitle",null, htmlAttributes: new { @class = "form-control" } )
+                @Html.ValidationMessageFor(model => model.SellingPointTitle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StartPeriod, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StartPeriod, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StartPeriod, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EndPeriod, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EndPeriod, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EndPeriod, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Get" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div class="form-group">
+    @{ string result = Session["Result"]?.ToString() ?? "NaN"; }
+    Result: @result
+</div>
+
+<div>
+    @Html.ActionLink("Back", "Index","Home")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

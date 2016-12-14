@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using ShawarmaProject.DB;
+using ShawarmaProject.WebUI.ViewModels;
 
 namespace ShawarmaProject.WebUI.Controllers
 {
@@ -83,7 +84,7 @@ namespace ShawarmaProject.WebUI.Controllers
             return RedirectToAction("AddRecipeShawarma");
         }
 
-        public ActionResult AddRecipe()
+        public ActionResult _AddRecipe()
         {
             return View(Session["ShawarmaRecipes"]);
         }
@@ -93,12 +94,7 @@ namespace ShawarmaProject.WebUI.Controllers
             (Session["ShawarmaRecipes"] as List<IngradientWeight>)?.RemoveAt(id);
             return RedirectToAction("AddRecipeShawarma"); ;
         }
-
-        //public string AddRecipe(string shawarmaName, IngradientWeight[] ingradientWeightAccordings, int cookingTime = 0)
-        //{
-
-        //}
-
+        
         public ActionResult AddPrice()
         {
             ViewBag.SellingPointTitle = new SelectList(DatabaseRepresentation.GetSellingPoints(), "ShawarmaTitle", "ShawarmaTitle");
@@ -148,14 +144,36 @@ namespace ShawarmaProject.WebUI.Controllers
                ? "Success"
                : "Error";
         }
-        //public ActionResult SellingPointRevenue(string sellingPointName, DateTime start, DateTime end)
-        //{
 
-        //}
+        public ActionResult Revenue()
+        {
+            ViewBag.SellingPointTitle = new SelectList(DatabaseRepresentation.GetSellingPoints(), "ShawarmaTitle",
+                "ShawarmaTitle");
+            return View();
+        }
 
-        //public ActionResult SellerSalary
-        //    (string sellerName, DateTime startPeriod, DateTime endPeriod, decimal workingRate, decimal cookingRate)
-        //{
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Revenue(RevenueViewModel model)
+        {
+            Session["Result"] = DatabaseQueries.SellingPointRevenue(model.SellingPointTitle, model.StartPeriod,
+                model.EndPeriod);
+            return RedirectToAction("Revenue");
+        }
+
+        public ActionResult Sallary()
+        {
+            ViewBag.SellerName = new SelectList(DatabaseRepresentation.GetSellers(), "SellerName","SellerName");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Sallary(SallaryViewModel model)
+        {
+            Session["Result"] = DatabaseQueries.SellerSalary(model.SellerName, model.StartPeriod, model.EndPeriod,
+                decimal.Parse(Request.Form["WorkingRate"]), decimal.Parse(Request.Form["CookingRate"]));
+            return RedirectToAction("Sallary");
+        }
     }
 }

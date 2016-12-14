@@ -305,6 +305,15 @@ namespace ShawarmaProject.DB
                 return result;
             }
         }
+
+        public static IEnumerable<Seller> GetSellers()
+        {
+            using (var ctx = new ShawarmaDBEntities())
+            {
+                var result = new List<Seller>(ctx.Sellers);
+                return result;
+            }
+        }
     }
 
     public struct IngradientWeight
